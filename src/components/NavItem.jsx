@@ -29,7 +29,7 @@ import { animate } from "framer-motion";
                 {image.navTitle}
             </Link>
             <motion.video
-                src="../../public/AnimationsMP4/Energia Maldita.mp4"
+                src="https://res.cloudinary.com/dvtk6ky3t/video/upload/v1783312577/Energia_Maldita_zrzosm.mp4"
                 autoPlay
                 muted
                 loop
