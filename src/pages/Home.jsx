@@ -33,7 +33,7 @@ function Home() {
 
     return (
         <PageTransition
-            className='relative min-h-screen w-screen'>
+            className='relative h-screen w-screen'>
             <Particles
             speed="0.1"
             className="absolute inset-0 bg-black flex min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
