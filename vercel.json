@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd blogYaz && npm install && npm run build",
+  "outputDirectory": "blogYaz/dist",
+  "installCommand": "cd blogYaz && npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/blogYaz/index.html"
+    }
+  ]
+}

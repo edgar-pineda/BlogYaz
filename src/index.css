@@ -1,0 +1,380 @@
+:root {
+  --font: "font_jujutsuKaisen";
+  font-family: var(--font);
+  background-color: #000000;
+  --hue: 27;
+  --sat: 69%;
+  --white: hsl(0, 0%, 100%);
+  --purple-primary: rgba(132, 0, 255, 1);
+  --purple-glow: rgba(132, 0, 255, 0.2);
+  --purple-border: rgba(132, 0, 255, 0.8);
+  --border-color: #373a29;
+  --background-dark: #120F17;
+  color-scheme: light dark;
+}
+
+.card-grid {
+  display: grid;
+  gap: 0.5em;
+  padding: 0.75em;
+  max-width: 90vw;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
+  justify-content: center;
+  align-items: center;
+}
+
+.magic-bento-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  aspect-ratio: 4/3;
+  min-height: 100px;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding: 1em;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: var(--background-dark);
+  font-weight: 300;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 200px;
+}
+
+.magic-bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__title,
+.magic-bento-card--text-autohide .magic-bento-card__description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__title {
+  -webkit-line-clamp: var(--clamp-title);
+  line-clamp: var(--clamp-title);
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__description {
+  -webkit-line-clamp: var(--clamp-desc);
+  line-clamp: var(--clamp-desc);
+}
+
+@media (max-width: 599px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+
+  .magic-bento-card {
+    width: 100%;
+    min-height: 180px;
+  }
+}
+
+@media (min-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .magic-bento-card:nth-child(5) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .magic-bento-card:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .magic-bento-card:nth-child(4) img {
+    object-position: top;
+  }
+
+  .magic-bento-card:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    aspect-ratio: 2/3;
+  }
+
+  .magic-bento-card:nth-child(11) {
+    grid-column: 6;
+    grid-row: 1 / span 2;
+    aspect-ratio: 2/3;
+  }
+}
+
+/* Border glow effect */
+.magic-bento-card--border-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 6px;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.8)) 0%,
+    rgba(132, 0, 255, calc(var(--glow-intensity) * 0.4)) 30%,
+    transparent 60%
+  );
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.magic-bento-card--border-glow:hover::after {
+  opacity: 1;
+}
+
+.magic-bento-card--border-glow:hover {
+  box-shadow:
+    0 4px 20px rgba(46, 24, 78, 0.4),
+    0 0 30px var(--purple-glow);
+}
+
+.particle-container {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.particle-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* La imagen cubre todo, se corta si es necesario */
+  display: block;
+  object-position: center;
+}
+
+.particle::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: rgba(132, 0, 255, 0.2);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.particle-container:hover {
+  box-shadow:
+    0 4px 20px rgba(46, 24, 78, 0.2),
+    0 0 30px var(--purple-glow);
+}
+
+/* Global spotlight styles */
+.global-spotlight {
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  z-index: 200 !important;
+  pointer-events: none;
+}
+
+.bento-section {
+  position: relative;
+  user-select: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@font-face{
+  font-family: "font_jujutsuKaisen";
+  src: url('./assets/Fonts/Jujutsu Kaisen.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal
+}
+
+@import "tailwindcss";
+
+.circular-gallery {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
+
+.particles-container {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #555;
+  border-radius: 24px;
+  padding: 16px;
+  --outer-r: 24px;
+  --p-distance: 12px;
+}
+
+.carousel-track {
+  display: flex;
+}
+
+.carousel-item {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid #555;
+  border-radius: calc(var(--outer-r) - var(--p-distance));
+  overflow: hidden;
+  cursor: grab;
+}
+
+.carousel-item:active {
+  cursor: grabbing;
+}
+
+.carousel-container.round {
+  border: 1px solid #555;
+}
+
+.carousel-item.round {
+  background-color: #1B1722;
+  position: relative;
+  bottom: 0.1em;
+  border: 1px solid #555;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-item-header.round {
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-indicators-container.round {
+  position: absolute;
+  z-index: 2;
+  bottom: 3em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-indicator.active {
+  background-color: #333333;
+}
+
+.carousel-indicator.inactive {
+  background-color: rgba(51, 51, 51, 0.4);
+}
+
+.carousel-item-header {
+  width: 100%;           /* Ancho completo del contenedor padre */
+  height: 100%;         /* Altura fija */
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-icon-container {
+  object-fit: cover;
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.carousel-icon {
+  height: 16px;
+  width: 16px;
+  color: #120F17;
+}
+
+.carousel-item-content {
+  padding: 20px;
+  padding-bottom: 20px;
+}
+
+.carousel-item-title {
+  margin-bottom: 4px;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+}
+
+.carousel-item-description {
+  font-size: 14px;
+  color: #fff;
+}
+
+.carousel-indicators-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.carousel-indicators {
+  margin-top: 16px;
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.carousel-indicator {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+
+.carousel-indicator.active {
+  background-color: #fff;
+}
+
+.carousel-indicator.inactive {
+  background-color: #555;
+}
+
+.Returnpolygon {
+  aspect-ratio: 1;
+  clip-path: shape(from 97.78% 56.91%,curve to 96.05% 64.51% with 98.75% 61.13%,line to 74.39% 91.67%,curve to 67.37% 95.05% with 71.69% 95.05%,line to 32.63% 95.05%,curve to 25.61% 91.67% with 28.31% 95.05%,line to 3.95% 64.51%,curve to 2.22% 56.91% with 1.25% 61.13%,line to 9.95% 23.04%,curve to 14.8% 16.95% with 10.91% 18.83%,line to 46.1% 1.88%,curve to 53.9% 1.88% with 50% 0%,line to 85.2% 16.95%,curve to 90.05% 23.04% with 89.09% 18.83%,line to 97.78% 56.91%,line to calc(90.05% - 8.01px) calc(23.04% - -5.39px),curve to calc(85.2% - 7.04px) calc(16.95% - -6.61px) with calc(89.09% - 7.82px) calc(18.83% - -6.23px),line to calc(53.9% - 0.78px) calc(1.88% - -9.62px),curve to calc(46.1% - -0.78px) calc(1.88% - -9.62px) with calc(50% - 0px) calc(0% - -10px),line to calc(14.8% - -7.04px) calc(16.95% - -6.61px),curve to calc(9.95% - -8.01px) calc(23.04% - -5.39px) with calc(10.91% - -7.82px) calc(18.83% - -6.23px),line to calc(2.22% - -9.56px) calc(56.91% - 1.38px),curve to calc(3.95% - -9.21px) calc(64.51% - 2.9px) with calc(1.25% - -9.75px) calc(61.13% - 2.23px),line to calc(25.61% - -4.88px) calc(91.67% - 8.33px),curve to calc(32.63% - -3.47px) calc(95.05% - 9.01px) with calc(28.31% - -4.34px) calc(95.05% - 9.01px),line to calc(67.37% - 3.47px) calc(95.05% - 9.01px),curve to calc(74.39% - 4.88px) calc(91.67% - 8.33px) with calc(71.69% - 4.34px) calc(95.05% - 9.01px),line to calc(96.05% - 9.21px) calc(64.51% - 2.9px),curve to calc(97.78% - 9.56px) calc(56.91% - 1.38px) with calc(98.75% - 9.75px) calc(61.13% - 2.23px),line to calc(90.05% - 8.01px) calc(23.04% - -5.39px));
+}
+
+.Closepolygon {
+  aspect-ratio: 1;
+  clip-path: shape(from 90.87% 40.87%,curve to 90.87% 59.13% with 100% 50%,line to 59.13% 90.87%,curve to 40.87% 90.87% with 50% 100%,line to 9.13% 59.13%,curve to 9.13% 40.87% with 0% 50%,line to 40.87% 9.13%,curve to 59.13% 9.13% with 50% 0%);
+}

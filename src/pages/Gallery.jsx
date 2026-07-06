@@ -1,0 +1,89 @@
+import { React, useEffect, useRef, useState } from "react"
+import { motion, AnimatePresence } from 'framer-motion';
+import PageTransition from "../assets/animations/divTransition"
+import Particles from "../components/BGReactBits/Particles"
+import MagicBento from "../components/MagicBento"
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const carpeta = 'blogYaz/src/assets/Photos';
+
+const archivos = import.meta.glob('../assets/Photos/*.{png,jpg,jpeg,gif,mp4,webm}', {
+  eager: true,
+  import: 'default'
+});
+const FotosURL = Object.values(archivos);
+
+const textosPersonalizados = [
+  "Dia del tin Marin. Que jodias negrita, pero fue muy divertido ir al Tin Marin contigo. Gracias",
+  "Montañas nevadas",
+  "City lights",
+  "Mi mascota",
+  // ... tantos como fotos tengas
+];
+
+const cardData = FotosURL.map((url, index) => ({
+  url: url,
+  text: textosPersonalizados[index] || "Sin descripción" // fallback por si falta alguno
+}));
+
+function Gallery() {
+    const [modalHidden, setModalHidden] = useState(true);
+    const [selectedCard, setSelectedCard] = useState(null);
+
+    const ModalOpen = (index) => {
+        setSelectedCard(cardData[index]);
+        setModalHidden(false);
+    }
+
+    return(
+        <PageTransition className='relative h-screen w-screen z-10'>
+            <Particles
+            speed="0.1"
+            className="absolute inset-0 bg-black flex flex-row min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
+
+            <div className="relative z-10 flex h-screen w-screen flex-row items-center justify-between px-20 py-30"
+            style={modalHidden ? {filter: "none"} : { filter: 'blur(3px)' }}>
+                <MagicBento
+                    textAutoHide={true}
+                    enableStars={true}
+                    enableBorderGlow={true}
+                    spotlightRadius={400}
+                    particleCount={12}
+                    glowColor="25, 60, 184"
+                    cardData={cardData}
+                    onclick={ModalOpen}
+                    disableAnimations={modalHidden? false : true}/>
+            </div>
+
+            <AnimatePresence>
+                {!modalHidden && (
+                    <motion.div
+                        className="fixed top-1/2 left-1/2 z-60 h-8/9 w-7/9 flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 p-10"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="fixed z-20 right-10 top-10">
+                            <motion.button
+                                onClick={() => setModalHidden(true)}
+                                className="w-20 h-20 text-2xl bg-blue-400 Closepolygon"
+                                whileHover={{ scale: 1.1 }}
+                            >
+                                Close
+                            </motion.button>
+                        </div>
+                        <div className="w-full h-full flex flex-row gap-6 justify-between ">
+                            <img src={selectedCard?.url} className="w-1/3 h-full object-cover"/>
+                            <div className="flex justify-end items-end text-3xl">
+                                <h2>{selectedCard?.text}</h2>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </PageTransition>
+    )
+}
+
+export default Gallery;
