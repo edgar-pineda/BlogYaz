@@ -36,7 +36,7 @@ function Gallery() {
     }
 
     return(
-        <PageTransition className='relative w-screen z-10'>
+        <PageTransition className='relative w-screen z-10 text-white'>
             <Particles
             speed="0.1"
             className="absolute inset-0 bg-black flex flex-row min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
