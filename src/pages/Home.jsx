@@ -36,9 +36,9 @@ function Home() {
             className='relative w-screen'>
             <Particles
             speed="0.1"
-            className="absolute inset-0 bg-black flex min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
+            className="absolute inset-0 bg-black flex flex-row min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
 
-            <div className="relative z-10 flex h-screen w-screen flex-col-reverse items-center justify-between p-0 gap-5">
+            <div className="relative z-10 flex w-full flex-col-reverse items-center justify-center p-0 gap-5">
                 <div className="p-4 w-full">
                     <ul className="flex flex-col gap-5">
                         {Images.map((image) => (

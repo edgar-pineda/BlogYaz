@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LinkHome from "./components/LinkHome";
 
 //Importamos las pages
+import Inicio from "./pages/Inicio";
 import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Principal from "./pages/Principal";
@@ -16,7 +17,8 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path="/" element={<Home />}/>
+          <Route path="/" element={<Inicio />}/>
+          <Route path="/nav" element={<Home />}/>
           <Route path="/gallery" element={<Gallery />}/>
           <Route path="/start" element={<Principal />}/>
 

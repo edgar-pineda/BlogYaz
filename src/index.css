@@ -11,6 +11,7 @@
   --border-color: #373a29;
   --background-dark: #120F17;
   color-scheme: light dark;
+  user-select: none;
 }
 
 .card-grid {
