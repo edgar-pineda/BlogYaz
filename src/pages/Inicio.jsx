@@ -1,7 +1,7 @@
 import PageTransition from "../assets/animations/divTransition";
 import Particles from "../components/BGReactBits/Particles";
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AnimacionLineaExterior from "../components/AnimacionLineaExterior";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,10 @@ const Inicio = () => {
 ;    const [progress, setProgress] = useState(0);
     const timerRef = useRef(null);
     const progressIntervalRef = useRef(null);
+
+    useEffect(() => {
+        localStorage.removeItem("isLoggedIn");
+    }, []);
 
     const {
         register,
