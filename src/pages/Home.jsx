@@ -28,36 +28,49 @@ function Home() {
 
     const goToSlide = (index) => {
         setCurrentIndex(index);
-        setCarouselKey(prev => prev + 1); // Forzar recreación del carrusel
+        setCarouselKey(prev => prev + 1);
     };
 
     return (
-        <PageTransition
-            className='relative w-screen'>
+        <PageTransition className='relative w-screen min-h-screen'>
+            {/* Partículas de fondo */}
             <Particles
-            speed="0.1"
-            className="absolute inset-0 bg-black flex flex-row min-w-screen min-h-screen justify-center items-center" style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}  />
+                speed="0.1"
+                className="absolute inset-0 bg-black w-full h-full"
+                style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}
+            />
 
-            <div className="relative z-10 flex w-full flex-col-reverse items-center justify-center p-0 gap-5">
-                <div className="p-4 w-full">
-                    <ul className="flex flex-col gap-5">
-                        {Images.map((image) => (
-                            <NavItem key={image.id} image={image} goToSlide={goToSlide} />
-                        ))}
-                    </ul>
+            {/* Contenido principal centrado */}
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full p-4">
+                <div className="flex flex-col items-center justify-center gap-8 w-full">
+                    {/* Carrusel */}
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="flex items-center justify-center w-full"
+                    >
+                        <Carrousel
+                            key={carouselKey}
+                            items={Images}
+                            baseWidth={260}
+                            round={true}
+                            initialSlide={currentIndex}
+                        />
+                    </motion.div>
+
+                    {/* Navegación */}
+                    <div className="w-full">
+                        <ul className="flex flex-col gap-4 items-center">
+                            {Images.map((image) => (
+                                <NavItem 
+                                    key={image.id} 
+                                    image={image} 
+                                    goToSlide={goToSlide} 
+                                />
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="flex items-center justify-between" style={{ height: '100%', position: 'relative' }} >
-                    <Carrousel
-                        key={carouselKey}
-                        items={Images}
-                        baseWidth={260}
-                        round={true}
-                        initialSlide={currentIndex}
-                    />
-                </motion.div>
             </div>
         </PageTransition>
     );

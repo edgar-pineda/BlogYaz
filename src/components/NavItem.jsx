@@ -22,7 +22,7 @@ import { animate } from "framer-motion";
             whileTap={{ scale: 0.8, x: 0 }}
             onMouseEnter={() => onMouseEnter()}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative z-10 h-10 flex items-center justify-center w-full bg-blue-600"
+            className="relative z-10 h-10 flex items-center justify-center w-70 bg-blue-600"
             style={{ clipPath: "polygon(100% 0%, 96% 48%, 100% 100%, 7% 100%, 0 49%, 6% 0)" }}
         >
             <Link to={image.to} className="w-full z-20 items-center justify-center h-full text-4xl flex">

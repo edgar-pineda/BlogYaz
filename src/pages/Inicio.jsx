@@ -28,7 +28,7 @@ const Inicio = () => {
     });
 
     const onSubmit = async (data) => {
-        if (data.nombre.trim() !== "Yaz") {
+        if (data.nombre.trim() !== "Andrea Yazmin Montepeque Juarez") {
             setError("nombre", {
                 type: "manual",
                 message: "Nombre incorrecto"
@@ -45,7 +45,8 @@ const Inicio = () => {
         }
         
         setModal(false);
-        navigate("/nav"); // Navegar a donde quieras
+        navigate("/nav");
+        localStorage.setItem("isLoggedIn", true)
         console.log("¡Login exitoso!");
     };
 
