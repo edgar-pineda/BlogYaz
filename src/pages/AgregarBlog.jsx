@@ -154,7 +154,7 @@ const Modal = ({setTab}) => {
             <AnimacionLineaExterior StrockeColor="#ffffff" duration="4" hover={hover} rx="12"/>
             <motion.div
                 whileInView={() => setHover(true)}
-                className="fixed top-1/2 left-1/2 z-60 w-8/10 aspect-square flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7"
+                className="fixed top-1/2 left-1/2 z-60 w-8/10 aspect-square flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7 text-white"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ x: -90 }}
@@ -184,8 +184,23 @@ const Modal = ({setTab}) => {
 const AgregarBlog = () => {
     const [ tab, setTab ] = useState("form");
 
+    // Prevenir scroll en toda la página
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        document.body.style.height = '100vh';
+        document.body.style.margin = '0';
+        document.body.style.padding = '0';
+        
+        return () => {
+            document.body.style.overflow = 'unset';
+            document.body.style.height = 'unset';
+            document.body.style.margin = 'unset';
+            document.body.style.padding = 'unset';
+        };
+    }, []);
+
     return(
-        <PageTransition className='relative max-h-screen'>
+        <PageTransition className='relative h-screen overflow-hidden'>
             <div className="absolute inset-0 z-0">
                 <Particles
                     speed="0.1"
@@ -193,7 +208,7 @@ const AgregarBlog = () => {
                 />
             </div>
             
-            <div className="font-sans relative z-10 flex items-center justify-center min-h-screen">
+            <div className="font-sans relative z-10 flex items-center justify-center h-screen overflow-hidden">
                 <AnimatePresence>
                     { tab === "form" ? (<Form setTab={setTab} tab={tab}/>) : (<Modal setTab={setTab}/>) }
                 </AnimatePresence>
