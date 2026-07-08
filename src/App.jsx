@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Gallery from "./pages/Gallery";
 import Principal from "./pages/Principal";
 import AgregarBlog from "./pages/AgregarBlog";
+import Blog from "./pages/Blog";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/nav" element={<Home />}/>
             <Route path="/gallery" element={<Gallery />}/>
             <Route path="/start" element={<Principal />}/>
+            <Route path="/blog" element={<Blog />}/>
           </Route>
 
           <Route path="/agregarBlog" element={<AgregarBlog />}/>

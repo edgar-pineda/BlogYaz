@@ -19,6 +19,12 @@ const Images = [
         image: "https://res.cloudinary.com/dvtk6ky3t/image/upload/v1778737853/descargar_j5iimx.jpg",
         navTitle: 'Gallery',
         to:"/gallery"
+    },
+    {
+        id: 3,
+        image: "https://res.cloudinary.com/dvtk6ky3t/image/upload/v1783480157/269090146478384266_mvmewq.jpg",
+        navTitle: 'Blog',
+        to:"/blog"
     }
 ]
 

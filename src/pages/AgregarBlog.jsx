@@ -13,6 +13,7 @@ const supabase = createClient(
 );
 
 const Form = ({setTab, tab}) => {
+    const [enviando, setEnviando] = useState(false);
     const {
         register,
         handleSubmit,
@@ -27,51 +28,51 @@ const Form = ({setTab, tab}) => {
     });
 
     const onSubmit = async (data) => {
-    // Validar que los campos no estén vacíos
-    if (!data.nombre.trim()) {
-      setError("nombre", {
-        type: "manual",
-        message: "Por favor ingresa tu nombre"
-      });
-      return;
-    }
-
-    if (!data.mensaje.trim()) {
-      setError("mensaje", {
-        type: "manual",
-        message: "Por favor escribe un mensaje"
-      });
-      return;
-    }
-
-    setEnviando(true);
-
-    try {
-      // Guardar en Supabase
-      const { error } = await supabase
-        .from('mensajes')
-        .insert([
-          { 
-            nombre: data.nombre.trim(), 
-            mensaje: data.mensaje.trim() 
-          }
-        ]);
-
-      if (error) {
-        console.error('Error de Supabase:', error);
-        setError("mensaje", {
-          type: "manual",
-          message: "Error al enviar mensaje. Intenta de nuevo."
+        // Validar que los campos no estén vacíos
+        if (!data.nombre.trim()) {
+        setError("nombre", {
+            type: "manual",
+            message: "Por favor ingresa tu nombre"
         });
-      } else {
-        setTab("modal")
-      }
+        return;
+        }
+
+        if (!data.mensaje.trim()) {
+        setError("mensaje", {
+            type: "manual",
+            message: "Por favor escribe un mensaje"
+        });
+        return;
+        }
+
+        setEnviando(true);
+
+        try {
+        // Guardar en Supabase
+        const { error } = await supabase
+            .from('mensajes')
+            .insert([
+            { 
+                nombre: data.nombre.trim(), 
+                mensaje: data.mensaje.trim() 
+            }
+            ]);
+
+        if (error) {
+            console.error('Error de Supabase:', error);
+            setError("mensaje", {
+            type: "manual",
+            message: "Error al enviar mensaje. Intenta de nuevo."
+            });
+        } else {
+            setTab("modal")
+        }
     } catch (error) {
-      console.error('Error:', error);
-      setError("mensaje", {
-        type: "manual",
-        message: "Error al enviar mensaje. Intenta de nuevo."
-      });
+        console.error('Error:', error);
+        setError("mensaje", {
+            type: "manual",
+            message: "Error al enviar mensaje. Intenta de nuevo."
+        });
     } finally {
       setEnviando(false);
     }
@@ -85,7 +86,7 @@ const Form = ({setTab, tab}) => {
             exit={{ scale: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <h1 className="text-center text-xl">Agrega un mensaje para Yazmin. Deseandole un feliz cumpleaños </h1>
+            <h1 className="text-center text-xl text-white">Agrega un mensaje para Yazmin. Deseandole un feliz cumpleaños </h1>
             <form 
                 autoComplete="off" 
                 onSubmit={handleSubmit(onSubmit)} 
@@ -118,7 +119,6 @@ const Form = ({setTab, tab}) => {
                     </label>
                     <textarea 
                         id="mensaje" 
-                        type="password" 
                         className={`transicion transicion w-full min-h-25 p-3 text-sm rounded-lg bg-white/60 shadow-lg overflow-hidden ${
                             errors.mensaje ? "border-2 border-blue-500" : ""
                         }`}
@@ -133,13 +133,14 @@ const Form = ({setTab, tab}) => {
                     )}
                 </div>
 
-                <button
+                <motion.button
                     type="submit"
                     disabled={isSubmitting}
+                    whileTap={{ scale: 0.95 }}
                     className="transicion w-full h-fit flex py-2 items-center justify-center rounded-lg shadow-lg bg-white text-blue-500 text-sm lg:text-lg hover:shadow-2xs hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isSubmitting ? "Enviando..." : "Enviar"}
-                </button>
+                </motion.button>
             </form> 
         </motion.div>
     )
@@ -153,7 +154,7 @@ const Modal = ({setTab}) => {
             <AnimacionLineaExterior StrockeColor="#ffffff" duration="4" hover={hover} rx="12"/>
             <motion.div
                 whileInView={() => setHover(true)}
-                className="fixed top-1/2 left-1/2 z-60 w-8/10 aspect-square flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7"
+                className="fixed top-1/2 left-1/2 z-60 w-8/10 h-6/10 flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ x: -90 }}
