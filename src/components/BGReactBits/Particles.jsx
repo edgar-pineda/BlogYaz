@@ -99,7 +99,6 @@ const Particles = ({
   className
 }) => {
   const containerRef = useRef(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -117,13 +116,36 @@ const Particles = ({
     const camera = new Camera(gl, { fov: 15 });
     camera.position.set(0, 0, cameraDistance);
 
+    // ✅ FUNCIÓN DE RESIZE MEJORADA
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
-      renderer.setSize(width, height);
-      camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
+      
+      // ✅ Si el height es 0, usar window.innerHeight como fallback
+      const finalHeight = height > 0 ? height : window.innerHeight;
+      const finalWidth = width > 0 ? width : window.innerWidth;
+      
+      renderer.setSize(finalWidth, finalHeight);
+      camera.perspective({ aspect: finalWidth / finalHeight });
+      
+      // ✅ Actualizar el canvas para que ocupe todo
+      gl.canvas.style.width = '100%';
+      gl.canvas.style.height = '100%';
+      gl.canvas.style.position = 'absolute';
+      gl.canvas.style.top = '0';
+      gl.canvas.style.left = '0';
     };
-    window.addEventListener('resize', resize, false);
+
+    // ✅ Resize inmediato y con observer para cambios
+    resize();
+    
+    // ✅ Observer para detectar cambios de tamaño del contenedor
+    const resizeObserver = new ResizeObserver(() => {
+      resize();
+    });
+    resizeObserver.observe(container);
+
+    window.addEventListener('resize', resize);
     resize();
 
     const handleMouseMove = e => {
@@ -213,6 +235,7 @@ const Particles = ({
 
     return () => {
       window.removeEventListener('resize', resize);
+      resizeObserver.disconnect();
       if (moveParticlesOnHover) {
         container.removeEventListener('mousemove', handleMouseMove);
       }
@@ -236,7 +259,23 @@ const Particles = ({
     pixelRatio
   ]);
 
-  return <div ref={containerRef} className={`particles-container ${className}`} />;
+  return (
+    <div 
+      ref={containerRef} 
+      className={`particles-container ${className}`} 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        minHeight: '100%', // ✅ Importante
+        height: '100%', // ✅ Ocupa todo el espacio del padre
+        overflow: 'hidden',
+        pointerEvents: 'none', // ✅ Para que no interfiera con clics
+        zIndex: 0
+      }} 
+    />
+  );
 };
 
 export default Particles;
