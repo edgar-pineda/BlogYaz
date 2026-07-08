@@ -154,7 +154,7 @@ const Modal = ({setTab}) => {
             <AnimacionLineaExterior StrockeColor="#ffffff" duration="4" hover={hover} rx="12"/>
             <motion.div
                 whileInView={() => setHover(true)}
-                className="fixed top-1/2 left-1/2 z-60 w-8/10 h-6/10 flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7"
+                className="fixed top-1/2 left-1/2 z-60 w-8/10 aspect-square flex flex-col bg-blue-950/80 rounded-2xl -translate-x-1/2 -translate-y-1/2 justify-center items-center px-5 gap-7"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ x: -90 }}
