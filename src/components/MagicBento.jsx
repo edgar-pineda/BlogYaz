@@ -1,3 +1,4 @@
+import { motion, AnimatePresence, scale } from 'framer-motion';
 import { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
 
@@ -475,21 +476,28 @@ const MagicBento = ({
           };
 
           return (
-              <ParticleCard
-                key={index}
-                {...cardProps}
-                disableAnimations={shouldDisableAnimations}
-                particleCount={particleCount}
-                glowColor={glowColor}
-                enableTilt={enableTilt}
-                clickEffect={clickEffect}
-                enableMagnetism={enableMagnetism}
-                onclick={onclick}
-                index={index}
+            <ParticleCard
+              key={index}
+              {...cardProps}
+              disableAnimations={shouldDisableAnimations}
+              particleCount={particleCount}
+              glowColor={glowColor}
+              enableTilt={enableTilt}
+              clickEffect={clickEffect}
+              enableMagnetism={enableMagnetism}
+              onclick={onclick}
+              index={index}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className='flex h-full w-full'
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <img src={card.url} alt="" />
-              </ParticleCard>
-            );
+              </motion.div>
+            </ParticleCard>
+          );
         })}
       </BentoCardGrid>
     </div>

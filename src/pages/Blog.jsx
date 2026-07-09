@@ -88,7 +88,7 @@ const Blog = () => {
             
             <div className="relative z-10 flex items-center justify-center min-h-screen w-full text-white">
                 <div className="flex flex-col px-10 items-center w-full">
-                    { Mensaje ? (<TextType onComplete={() => ContadorSwitch()} className="text-center text-lg">Pense que haciendo solamente un sitio con palabras mías sería suficiente, pero quería que supieras de todas las personas a quienes les importas y quienes .</TextType>) : null }
+                    { Mensaje ? (<TextType onComplete={() => ContadorSwitch()} className="text-center text-lg">En esta sección quiero que veas que hay varias personas a las que les importas. Reuní felicitaciones de todos los que te quieren y en quienes has dejado una huella significativa, por el cariño que todos te tienen ellos quisieron participar en este regalo especial. Quiero que veas que eres más importante en la vida de los démas de lo que crees...</TextType>) : null }
                     {Contador ? (
                         <div className="flex flex-col items-center justify-center gap-5">
                             <motion.div
