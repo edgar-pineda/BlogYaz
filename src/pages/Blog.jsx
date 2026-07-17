@@ -98,7 +98,7 @@ const Blog = () => {
                                 transition={{ duration: 0.5, delay: 0.1 }}
                                 className="relative flex items-center justify-center h-35 w-35 rounded-full p-1 bg-blue-500/70"
                             >
-                                <AnimacionLineaExterior StrockeColor="#ffffff" duration="10" hover={hover}/>
+                                <AnimacionLineaExterior StrockeColor="#ffffff" duration="7" hover={hover}/>
                                 <h1 className="text-5xl text-white">{contadorNumber} </h1>
                             </motion.div>
                             <TextType className="px-5 text-center text-2xl">Calculando todas las felicitaciones...</TextType>
