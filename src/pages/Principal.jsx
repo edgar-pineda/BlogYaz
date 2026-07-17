@@ -48,14 +48,6 @@ const Principal = () => {
                             preserveAspectRatio="none"
                             fill="none"
                         >
-                            {/*
-                                Camino en zigzag generado de forma programatica (no a mano) para que
-                                todos los tramos verticales entre "cruces" midan lo mismo (260 unidades).
-                                Antes el trazo original tenia tramos muy irregulares (entre 66 y 215
-                                unidades) y el ultimo tramo quedaba visiblemente mas corto que el resto;
-                                aqui se mantiene el mismo radio de curva (15) en cada esquina y se agrega
-                                un tramo final del mismo largo que los demas para evitar ese efecto.
-                            */}
                             <motion.path
                                 initial={{ pathLength: 0 }}
                                 whileInView={{ pathLength: 1 }}
@@ -67,6 +59,7 @@ const Principal = () => {
                             />
                         </svg>
 
+                        {/*Div con las tarjetas de los mensajes*/}
                         <div className="relative z-10 px-5 py-15 flex flex-col gap-10">
                             <motion.div
                                 initial={{ scale: 0 }}
@@ -83,9 +76,10 @@ const Principal = () => {
                             <motion.div
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
-                                transition={{ duration: 0.5, ease: "easeInOut", delay: 1.3 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 2.1 }}
                                 className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-end"
                             >
+                                <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784322470/215258057236336430_tzalwp.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
                                 <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
                                     Eres la persona más importante en mi vida, con quien más me divierto. Quien más me entiende y conoce.
                                 </TextType>
@@ -94,35 +88,82 @@ const Principal = () => {
                             <motion.div
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
-                                transition={{ duration: 0.5, ease: "easeInOut", delay: 1.3 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 3.3 }}
                                 className="w-full bg-blue-500/90 flex flex-col rounded-xl text-white self-center"
                             >
                                 <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
                                     Ultimas obsesiones:
                                 </TextType>
-                                <div className="w-full px-5 flex flex-col py-3 gap-3">
+                                <div className="w-full px-5 flex flex-col py-3 gap-2">
                                     <motion.iframe
                                         initial={{ opacity: 0, x: -90 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/6fl4Gu0lJm5hc8FM5JzCZD?utm_source=generator&theme=0&si=2c4a3c5ebc8048af" width="100%" height="132" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/6fl4Gu0lJm5hc8FM5JzCZD?utm_source=generator&theme=0&si=2c4a3c5ebc8048af" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
                                     ></motion.iframe>
                                     <motion.iframe
                                         initial={{ opacity: 0, x: -90 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
-                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/2KQIWXg1oWdkbE04CqcE4E?utm_source=generator&si=e2f5249bc0c34455" width="100%" height="132" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/2KQIWXg1oWdkbE04CqcE4E?utm_source=generator&si=e2f5249bc0c34455" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
                                     ></motion.iframe>
                                     <motion.iframe
                                         initial={{ opacity: 0, x: -90 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
-                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/3UIEaJs7OfXpcFSoQhqNC0?utm_source=generator&si=6bc26f6ec5fb43ae" width="100%" height="132" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                                        data-testid="embed-iframe" className="rounded-2xl" src="https://open.spotify.com/embed/track/3UIEaJs7OfXpcFSoQhqNC0?utm_source=generator&si=6bc26f6ec5fb43ae" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
                                     ></motion.iframe>
                                 </div>
                             </motion.div>
+
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 5 }}
+                                className="w-full bg-blue-500/90 flex flex-row rounded-xl text-white self-center"
+                            >
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                    Ya te he dicho mil veces y de mil formas diferentes lo mucho que te quiero, pero quiero contarte algo que he estado pensando. Ultimamente me he puesto a pensar en como una roca, un animal, cualquier cosa, por más pequeña que sea, puede alterar el rumbo de todo y de todos
+                                </TextType>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 6.5 }}
+                                className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-end"
+                            >
+                                <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784323065/Gojo_Satoru_Geto_Suguru_y2wwvt.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                    El hecho de haberte encontrado entre ese mar de probabilidades y de caos es algo que no puedo explicar y que agradezco a diario. No creo que sea coincidencia, que la persona que más me entiende, con quien más coincido, solo haya aparecido por suerte o casualidad.
+                                </TextType>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 7 }}
+                                className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-start"
+                            >
+                                <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784323614/42080577764816279_od74le.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                    Hemos hablado de ir a Japon juntos, de viajar y de en 10, 20, 30, 50 años, seguir siendo amigos. Pero quiero que sepas que ese plan o comentario sin significado, es algo que de verdad atesoro. Quiero seguir a tu lado y reir más, llorar más y no volver a sentirme solo porque sé que tú estás ahi.
+                                </TextType>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 9.5 }}
+                                className="w-full bg-blue-500/90 flex flex-row rounded-xl text-white self-center"
+                            >
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                    Lo unico que quiero decir es que quiero celebrar más cumpleaños contigo, no quiero que nos alejemos, aunque pase cualquier cosa. Disfruta tu día, espero que haya empezado con una gran sonrisa y que siga con muchas más. TE QUIERO MUCHO
+                                </TextType>
+                            </motion.div>
                         </div>
                     </motion.div>
+                    
                 )}
             </div>
         </PageTransition>
