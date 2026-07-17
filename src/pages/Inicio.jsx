@@ -40,7 +40,7 @@ const Inicio = () => {
             return;
         }
         
-        if (data.contraseña !== "12345") {
+        if (data.contraseña !== import.meta.env.VITE_INICIO_PASSWORD) {
             setError("contraseña", {
                 type: "manual",
                 message: "Contraseña incorrecta"
