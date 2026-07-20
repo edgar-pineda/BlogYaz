@@ -14,11 +14,19 @@ const archivos = import.meta.glob('../assets/Photos/*.{png,jpg,jpeg,gif,mp4,webm
 const FotosURL = Object.values(archivos);
 
 const textosPersonalizados = [
-  "Dia del tin Marin. Que jodias negrita, pero fue muy divertido ir al Tin Marin contigo. Gracias",
-  "Montañas nevadas",
-  "City lights",
-  "Mi mascota",
-  // ... tantos como fotos tengas
+  "Eres una persona increible que siempre me hace reir aunque me sienta mal o cansado",
+  "No sabes como aprecio cada segundo juntos, porque siento que nos entendemos demasiado",
+  "Quiero que cumplas todas tus metas y sueños y quiero que siempre soñes en grande porque eres capaz de muchas cosas",
+  "Deseo llegar a ir a otros paises juntos, poder conocer japon, argentina y brasil",
+  "Eres una gran amiga, nunca lo dudes, porque sé que lo haces, porque siempre te vere como la mejor amistad que jamas podre haber pedido",
+  "Puede que peleemos, o discutamos, no debemos estar de acuerdo en todo, pero siempre quiero que respetemos la opinión del otro",
+  "No quiero que tengas filtros, o temas decir algo, nunca te juzgare ni me alejare por algo que digas",
+  "Puedes ser imprudente, graciosa, puedes ser tú misma. Yo a esa Yazmin quiero conocer mejor que a nadie",
+  "Eres amable, empatica y gentil. Tratas a todas las personas por igual y nunca dejas a nadie fuera",
+  "Nunca nos alejemos, nunca dejemos que una pelea nos aleje, quiero que siempre estemos juntos, no quiero que nunca nos distanciemos",
+  "Sé que las amistades no deben tener contacto diario para durar, y no creo que nuestra amistad sea fragil o algo, pero no quiero que un día se haga normal que no hablemos, por eso me preocupo cuando no hablamos",
+  "He visto como las amigas de mi hermana terminan criticandola y hablando mal de ellas a sus espaldas, y no quiero que nos pase lo mismo",
+  "Somos los más fuertes y no quiero que acabemos como ellos. Quiero que estemos juntos y bien siempre"
 ];
 
 const cardData = FotosURL.map((url, index) => ({
