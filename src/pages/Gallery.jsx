@@ -26,7 +26,8 @@ const textosPersonalizados = [
   "Nunca nos alejemos, nunca dejemos que una pelea nos aleje, quiero que siempre estemos juntos, no quiero que nunca nos distanciemos",
   "Sé que las amistades no deben tener contacto diario para durar, y no creo que nuestra amistad sea fragil o algo, pero no quiero que un día se haga normal que no hablemos, por eso me preocupo cuando no hablamos",
   "He visto como las amigas de mi hermana terminan criticandola y hablando mal de ellas a sus espaldas, y no quiero que nos pase lo mismo",
-  "Somos los más fuertes y no quiero que acabemos como ellos. Quiero que estemos juntos y bien siempre"
+  "Somos los más fuertes y no quiero que acabemos como ellos. Quiero que estemos juntos y bien siempre",
+  "Han sido 4 años que nos hemos conocidos, y aprecio cada buen momento. Y siempre seran especial para mí"
 ];
 
 const cardData = FotosURL.map((url, index) => ({
@@ -91,7 +92,7 @@ function Gallery() {
                         <div className="w-full h-full flex flex-col gap-6 justify-between ">
                             <img src={selectedCard?.url} className="rounded-t-2xl w-full h-full object-cover max-h-2/3 object-top"/>
                             <div className="flex justify-end items-end text-xl px-4 pb-2 max-h-1/3">
-                                <h2>{selectedCard?.text}</h2>
+                                <h2 className="text-3xl">{selectedCard?.text}</h2>
                             </div>
                         </div>
                     </motion.div>

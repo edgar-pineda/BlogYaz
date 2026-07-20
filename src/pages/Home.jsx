@@ -66,7 +66,7 @@ function Home() {
 
                     {/* Navegación */}
                     <div className="w-full">
-                        <ul className="flex flex-col gap-4 items-center">
+                        <ul className="flex flex-col gap-4 items-center text-white">
                             {Images.map((image) => (
                                 <NavItem 
                                     key={image.id} 

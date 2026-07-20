@@ -86,6 +86,10 @@
   .magic-bento-card:nth-child(4) img {
     object-position: top;
   }
+  
+  .magic-bento-card:nth-child(14) {
+    filter: blur(10px);
+  }
 
   .magic-bento-card:nth-child(2) {
     grid-column: 2 / span 2;
