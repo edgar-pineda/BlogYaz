@@ -68,7 +68,7 @@ const Principal = () => {
                                 className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white"
                             >
                                 <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784132632/ItadoriYuuji_Happy_birthday_t2okzh.jpg" className="aspect-square h-full rounded-t-xl border-0" />
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Espero que te guste este regalo, no pude agregarle más cosas debido a expo, pero quería dejarte un pequeño obsequio especial que no se compra.
                                 </TextType>
                             </motion.div>
@@ -80,7 +80,7 @@ const Principal = () => {
                                 className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-end"
                             >
                                 <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784322470/215258057236336430_tzalwp.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Eres la persona más importante en mi vida, con quien más me divierto. Quien más me entiende y conoce.
                                 </TextType>
                             </motion.div>
@@ -91,7 +91,7 @@ const Principal = () => {
                                 transition={{ duration: 0.5, ease: "easeInOut", delay: 3.3 }}
                                 className="w-full bg-blue-500/90 flex flex-col rounded-xl text-white self-center"
                             >
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Ultimas obsesiones:
                                 </TextType>
                                 <div className="w-full px-5 flex flex-col py-3 gap-2">
@@ -122,7 +122,7 @@ const Principal = () => {
                                 transition={{ duration: 0.5, ease: "easeInOut", delay: 5 }}
                                 className="w-full bg-blue-500/90 flex flex-row rounded-xl text-white self-center"
                             >
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Ya te he dicho mil veces y de mil formas diferentes lo mucho que te quiero, pero quiero contarte algo que he estado pensando. Ultimamente me he puesto a pensar en como una roca, un animal, cualquier cosa, por más pequeña que sea, puede alterar el rumbo de todo y de todos
                                 </TextType>
                             </motion.div>
@@ -134,7 +134,7 @@ const Principal = () => {
                                 className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-end"
                             >
                                 <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784323065/Gojo_Satoru_Geto_Suguru_y2wwvt.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     El hecho de haberte encontrado entre ese mar de probabilidades y de caos es algo que no puedo explicar y que agradezco a diario. No creo que sea coincidencia, que la persona que más me entiende, con quien más coincido, solo haya aparecido por suerte o casualidad.
                                 </TextType>
                             </motion.div>
@@ -146,7 +146,7 @@ const Principal = () => {
                                 className="w-2/3 bg-blue-500/90 flex flex-col rounded-xl text-white self-start"
                             >
                                 <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784323614/42080577764816279_od74le.jpg" className="aspect-square h-full rounded-t-xl border-0 object-cover" />
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Hemos hablado de ir a Japon juntos, de viajar y de en 10, 20, 30, 50 años, seguir siendo amigos. Pero quiero que sepas que ese plan o comentario sin significado, es algo que de verdad atesoro. Quiero seguir a tu lado y reir más, llorar más y no volver a sentirme solo porque sé que tú estás ahi.
                                 </TextType>
                             </motion.div>
@@ -157,9 +157,18 @@ const Principal = () => {
                                 transition={{ duration: 0.5, ease: "easeInOut", delay: 9.5 }}
                                 className="w-full bg-blue-500/90 flex flex-row rounded-xl text-white self-center"
                             >
-                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-sm">
+                                <TextType speedTyping={50} className="h-full w-full flex items-center justify-center p-3 text-lg">
                                     Lo unico que quiero decir es que quiero celebrar más cumpleaños contigo, no quiero que nos alejemos, aunque pase cualquier cosa. Disfruta tu día, espero que haya empezado con una gran sonrisa y que siga con muchas más. TE QUIERO MUCHO
                                 </TextType>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ duration: 0.5, ease: "easeInOut", delay: 9.8 }}
+                                className="w-full bg-blue-500/90 flex flex-row rounded-xl text-white self-center"
+                            >
+                                <img src="https://res.cloudinary.com/dvtk6ky3t/image/upload/v1784521028/13933080091974148_frwmd6.jpg" className="aspect-square h-full rounded-xl border-0 object-cover" />   
                             </motion.div>
                         </div>
                     </motion.div>
